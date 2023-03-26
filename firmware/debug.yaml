@@ -1,5 +1,5 @@
 packages:
-  stock: !include stock.yaml
+  stock: !include jarvis.yaml
 
 logger:
   level: DEBUG

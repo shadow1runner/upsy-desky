@@ -1,7 +1,7 @@
 # Essential ESPHome config options
 esphome:
   name: "${name}"
-  friendly_name: "${friendly_name}"
+  # friendly_name: "${friendly_name}"
   name_add_mac_suffix: true
   on_boot:
     then:
@@ -24,7 +24,7 @@ esp32:
 # Configurable options
 substitutions:
   name: "upsy-desky"
-  friendly_name: "Upsy Desky"
+  # friendly_name: "Upsy Desky"
   desk_height_name: "Desk Height"
   target_desk_height_name: "Target Desk Height"
 
@@ -49,15 +49,15 @@ packages:
   addon_presets: !include addons/presets.yaml
   addon_stable_ids: !include addons/stable-ids.yaml
   addon_runtime_config: !include addons/runtime-config.yaml
-  addon_bluetooth_proxy: !include addons/bluetooth-proxy.yaml
+  # addon_bluetooth_proxy: !include addons/bluetooth-proxy.yaml
 
 button:
   - platform: restart
     name: "Restart"
 
-light:
-  - platform: status_led
-    id: upsy_desky_status_led
-    name: "Status LED"
-    pin: GPIO23
-    restore_mode: RESTORE_DEFAULT_ON
+# light:
+#   - platform: status_led
+#     id: upsy_desky_status_led
+#     name: "Status LED"
+#     pin: GPIO23
+#     restore_mode: RESTORE_DEFAULT_ON

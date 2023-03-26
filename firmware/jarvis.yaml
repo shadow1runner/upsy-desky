@@ -1,0 +1,64 @@
+packages:
+  base: !include stock.yaml
+
+esphome:
+  name_add_mac_suffix: false
+  project:
+    name: shadow1runner.upsy-desky # https://github.com/shadow1runner/upsy-desky/
+  libraries:
+    - i2c
+
+esp32:
+  board: esp32doit-devkit-v1
+
+uart:
+  id: handset_tx
+  tx_pin: GPIO17
+  baud_rate: 9600
+
+substitutions:
+  name: "fully-jarvis"
+
+  # Standing Desk Component Config
+  standing_desk_uart_rx_pin: GPIO16
+  standing_desk_up_pin: GPIO32
+  standing_desk_down_pin: GPIO33
+  standing_desk_min_height: "24.5" # in
+  standing_desk_max_height: "50.0" # in
+
+  # Presets Addon Config
+  button_bit1_pin: GPIO32
+  button_bit2_pin: GPIO33
+  button_bit4_pin: GPIO25
+  button_m_pin: GPIO26
+
+  # Runtime Config Defaults
+  default_height_units: "cm" # Must be "in" or "cm"
+
+wifi:
+  ap:
+    password: "Einstieg00"
+
+sensor:
+  # DHT20 temperature sensor, exposes I2C (address: 0x38) and internally uses the aht20 sensor
+  - platform: aht10
+    temperature:
+      name: "Office Temperature"
+      id: office_temperature
+      unit_of_measurement: "°C"
+    humidity:
+      name: "Office Humidity"
+      id: office_humidity
+      accuracy_decimals: 1
+      unit_of_measurement: "% RH"
+    update_interval: 60s
+  - platform: absolute_humidity
+    name: "Office Absolute Humidity"
+    temperature: office_temperature
+    humidity: office_humidity
+
+# required for DHT20 sensor
+i2c:
+  sda: GPIO21
+  scl: GPIO22
+  scan: false
