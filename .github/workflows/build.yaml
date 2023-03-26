@@ -16,26 +16,26 @@ jobs:
 
       - name: Install ESPHome
         run: pip install --user esphome
-      
+
       - name: Compile Release Firmware
         working-directory: firmware
         run: |
-          esphome compile stock.yaml
+          esphome compile jarvis.yaml
           mkdir -p bin
-          cp .esphome/build/upsy-desky/.pioenvs/upsy-desky/firmware-factory.bin bin/firmware-factory.bin
-          cp .esphome/build/upsy-desky/.pioenvs/upsy-desky/firmware.bin bin/firmware.bin
+          cp .esphome/build/fully-jarvis/.pioenvs/fully-jarvis/firmware-factory.bin bin/firmware-factory.bin
+          cp .esphome/build/fully-jarvis/.pioenvs/fully-jarvis/firmware.bin bin/firmware.bin
 
       - name: Compile Debug Firmware
         working-directory: firmware
         run: |
-          rm -rf .esphome/build/upsy-desky
+          rm -rf .esphome/build/fully-jarvis
           esphome compile debug.yaml
           mkdir -p bin
-          cp .esphome/build/upsy-desky/.pioenvs/upsy-desky/firmware-factory.bin bin/debug-firmware-factory.bin
-          cp .esphome/build/upsy-desky/.pioenvs/upsy-desky/firmware.bin bin/debug-firmware.bin
+          cp .esphome/build/fully-jarvis/.pioenvs/fully-jarvis/firmware-factory.bin bin/debug-firmware-factory.bin
+          cp .esphome/build/fully-jarvis/.pioenvs/fully-jarvis/firmware.bin bin/debug-firmware.bin
 
       - name: Upload Firmware
-        uses: skx/github-action-publish-binaries@release-1.3
+        uses: skx/github-action-publish-binaries@release-2.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
