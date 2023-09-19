@@ -1,6 +1,15 @@
 packages:
   base: !include base.yaml
 
+external_components:
+  - source: github://tjhorner/esphome-custom-components
+    components: [ project_version ]
+
+text_sensor:
+  - platform: project_version
+    name: "Upsy Desky Firmware Version"
+    internal: true
+
 logger:
   level: INFO
 
@@ -13,7 +22,6 @@ captive_portal:
 improv_serial:
 
 api:
-  password: ""
   reboot_timeout: 0s
 
 web_server:
@@ -23,4 +31,4 @@ ota:
   password: ""
 
 dashboard_import:
-  package_import_url: github://tjhorner/upsy-desky/firmware/stock.yaml@v1.0.0
+  package_import_url: github://tjhorner/upsy-desky/firmware/stock.yaml@v1.1.1
