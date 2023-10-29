@@ -38,6 +38,7 @@ substitutions:
 wifi:
   ap:
     password: "Einstieg00"
+  power_save_mode: none
 
 sensor:
   # DHT20 temperature sensor, exposes I2C (address: 0x38) and internally uses the aht20 sensor
