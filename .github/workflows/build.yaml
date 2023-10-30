@@ -40,6 +40,12 @@ jobs:
           ota_password: ${{ secrets.OTA_PASSWORD }}
           EOF
 
+      - name: Create secrets.yaml file based on Github Secrets
+        working-directory: firmware
+        run: |
+          echo "wifi_ssid: ${{ secrets.wifi_ssid }}" >> secrets.yaml
+          echo "wifi_password: ${{ secrets.wifi_password }}" >> secrets.yaml
+
       - name: Compile Release Firmware
         run: |
           esphome compile jarvis_withsecrets.yaml
