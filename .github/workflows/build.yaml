@@ -17,10 +17,16 @@ jobs:
       - name: Install ESPHome
         run: pip install --user esphome
 
+      - name: Create secrets.yaml file based on Github Secrets
+        working-directory: firmware
+        run: |
+          echo "wifi_ssid: ${{ secrets.wifi_ssid }}" >> secrets.yaml
+          echo "wifi_password: ${{ secrets.wifi_password }}" >> secrets.yaml
+
       - name: Compile Release Firmware
         working-directory: firmware
         run: |
-          esphome compile jarvis.yaml
+          esphome compile jarvis_withsecrets.yaml
           mkdir -p bin
           cp .esphome/build/fully-jarvis/.pioenvs/fully-jarvis/firmware-factory.bin bin/firmware-factory.bin
           cp .esphome/build/fully-jarvis/.pioenvs/fully-jarvis/firmware.bin bin/firmware.bin
