@@ -122,7 +122,7 @@ Thus:
 
 ## Wiring
 
-Cf. schematics folder
+Cf. `pcb` folder
 
 ## Additional Documentation
 
