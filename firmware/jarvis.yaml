@@ -38,28 +38,28 @@ substitutions:
 wifi:
   ap:
     password: "Einstieg00"
-  power_save_mode: none
+  # power_save_mode: none
 
-sensor:
-  # DHT20 temperature sensor, exposes I2C (address: 0x38) and internally uses the aht20 sensor
-  - platform: aht10
-    temperature:
-      name: "Office Temperature"
-      id: office_temperature
-      unit_of_measurement: "°C"
-    humidity:
-      name: "Office Humidity"
-      id: office_humidity
-      accuracy_decimals: 1
-      unit_of_measurement: "% RH"
-    update_interval: 60s
-  - platform: absolute_humidity
-    name: "Office Absolute Humidity"
-    temperature: office_temperature
-    humidity: office_humidity
-
-# required for DHT20 sensor
-i2c:
-  sda: GPIO21
-  scl: GPIO22
-  scan: false
+# sensor:
+#   # DHT20 temperature sensor, exposes I2C (address: 0x38) and internally uses the aht20 sensor
+#   - platform: aht10
+#     temperature:
+#       name: "Office Temperature"
+#       id: office_temperature
+#       unit_of_measurement: "°C"
+#     humidity:
+#       name: "Office Humidity"
+#       id: office_humidity
+#       accuracy_decimals: 1
+#       unit_of_measurement: "% RH"
+#     update_interval: 60s
+#   - platform: absolute_humidity
+#     name: "Office Absolute Humidity"
+#     temperature: office_temperature
+#     humidity: office_humidity
+#
+# # required for DHT20 sensor
+# i2c:
+#   sda: GPIO21
+#   scl: GPIO22
+#   scan: false
