@@ -124,6 +124,8 @@ Thus:
 
 Cf. `pcb` folder
 
+> Note: 44e848bba46ff77500eab2dd5d7e8c4475432bc6 and 44b5dc0cdc3e29ba02147292698e92e65c89b479 tried to mitigate connectivity issues when the board, after boot, just didn't want to connect to Wifi; these did not help though (and have thus been reverted); what brought long-term remedy was connecting the USB board via USB (powered by one of the monitors), then enough stable voltage (?) lead to a clean boot.
+
 ## Additional Documentation
 
 You can find everything you need in the [GitHub wiki](https://github.com/tjhorner/upsy-desky/wiki/Getting-Started).
