@@ -1,6 +1,6 @@
 packages:
   base: !include base.yaml
-  addon_bluetooth_proxy: !include addons/bluetooth-proxy.yaml
+  # addon_bluetooth_proxy: !include addons/bluetooth-proxy.yaml
 
 substitutions:
   bluetooth_proxy_active_connections: "false"
