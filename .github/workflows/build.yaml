@@ -7,42 +7,48 @@ jobs:
   build:
     name: Build Firmware
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: firmware
     steps:
       - uses: actions/checkout@v4
 
       - uses: actions/setup-python@v4
         with:
-          python-version: "3.9"
+          python-version: "3.x"
 
       - name: Install ESPHome
-        run: pip install --user esphome
-
-      - name: Create secrets.yaml file based on Github Secrets
-        working-directory: firmware
         run: |
-          echo "wifi_ssid: ${{ secrets.wifi_ssid }}" >> secrets.yaml
-          echo "wifi_password: ${{ secrets.wifi_password }}" >> secrets.yaml
+          python -m pip install --upgrade pip
+          pip install esphome
+
+      - name: Create secrets.yaml based on Github Secrets
+        run: |
+          cat << EOF > secrets.yaml
+          wifi_ssid: ${{ secrets.WIFI_SSID }}
+          wifi_password: ${{ secrets.WIFI_PASSWORD }}
+          EOF
 
       - name: Compile Release Firmware
-        working-directory: firmware
         run: |
           esphome compile jarvis_withsecrets.yaml
+
           mkdir -p bin
           cp .esphome/build/fully-jarvis/.pioenvs/fully-jarvis/firmware-factory.bin bin/firmware-factory.bin
           cp .esphome/build/fully-jarvis/.pioenvs/fully-jarvis/firmware.bin bin/firmware.bin
 
       - name: Compile Debug Firmware
-        working-directory: firmware
         run: |
           rm -rf .esphome/build/fully-jarvis
           esphome compile debug.yaml
+
           mkdir -p bin
           cp .esphome/build/fully-jarvis/.pioenvs/fully-jarvis/firmware-factory.bin bin/debug-firmware-factory.bin
           cp .esphome/build/fully-jarvis/.pioenvs/fully-jarvis/firmware.bin bin/debug-firmware.bin
 
-      - name: Upload Firmware
-        uses: skx/github-action-publish-binaries@release-2.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Upload firmware artifacts
+        uses: actions/upload-artifact@v4
         with:
-          args: "firmware/bin/*.bin"
+          name: firmware
+          # Note: this does NOT take the working-directory into account -_-
+          path: 'firmware/bin/*.bin'
