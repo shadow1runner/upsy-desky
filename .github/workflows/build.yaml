@@ -34,7 +34,7 @@ jobs:
           esphome compile jarvis_withsecrets.yaml
 
           mkdir -p bin
-          cp .esphome/build/fully-jarvis/.pioenvs/fully-jarvis/firmware-factory.bin bin/firmware-factory.bin
+          cp .esphome/build/fully-jarvis/.pioenvs/fully-jarvis/firmware.factory.bin bin/firmware.factory.bin
           cp .esphome/build/fully-jarvis/.pioenvs/fully-jarvis/firmware.bin bin/firmware.bin
 
       - name: Compile Debug Firmware
@@ -43,7 +43,7 @@ jobs:
           esphome compile debug.yaml
 
           mkdir -p bin
-          cp .esphome/build/fully-jarvis/.pioenvs/fully-jarvis/firmware-factory.bin bin/debug-firmware-factory.bin
+          cp .esphome/build/fully-jarvis/.pioenvs/fully-jarvis/firmware.factory.bin bin/debug-firmware.factory.bin
           cp .esphome/build/fully-jarvis/.pioenvs/fully-jarvis/firmware.bin bin/debug-firmware.bin
 
       - name: Upload firmware artifacts
