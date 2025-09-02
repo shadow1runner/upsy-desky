@@ -24,7 +24,7 @@ jobs:
 
       - name: Create secrets.yaml based on Github Secrets
         run: |
-          cat << EOF > secrets.yaml
+          cat << 'EOF' > secrets.yaml
           wifi_ssid: ${{ secrets.WIFI_SSID }}
           wifi_password: ${{ secrets.WIFI_PASSWORD }}
           EOF
