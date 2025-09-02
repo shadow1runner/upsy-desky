@@ -27,6 +27,9 @@ jobs:
           cat << 'EOF' > secrets.yaml
           wifi_ssid: ${{ secrets.WIFI_SSID }}
           wifi_password: ${{ secrets.WIFI_PASSWORD }}
+          web_user: ${{ secrets.WEB_USER }}
+          web_password: ${{ secrets.WEB_PASSWORD }}
+          ota_password: ${{ secrets.OTA_PASSWORD }}
           EOF
 
       - name: Compile Release Firmware
