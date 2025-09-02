@@ -85,7 +85,12 @@ Thus:
       ```yaml
       wifi_ssid: TODO1
       wifi_password: TODO2
-      ```
+
+      web_user: TODO3
+      web_password: TODO4
+
+      ota_password: TODO5
+TL      ```
 
   * `esphome run debug.yaml` in case you need more information
   * `esphome logs debug.yaml` for connecting to `LOGGER` (UART0)
