@@ -43,7 +43,6 @@ jobs:
       - name: Compile Release Firmware
         run: |
           esphome compile jarvis_withsecrets.yaml
-
           mkdir -p bin
           cp .esphome/build/fully-jarvis/.pioenvs/fully-jarvis/firmware.factory.bin bin/firmware.factory.bin
           cp .esphome/build/fully-jarvis/.pioenvs/fully-jarvis/firmware.bin bin/firmware.bin
