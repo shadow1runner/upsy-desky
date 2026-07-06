@@ -22,6 +22,7 @@ Just like <https://github.com/tjhorner/upsy-desky>, but with a `DOIT esp32 DevKi
 2. ... <https://github.com/shadow1runner/FullyJarvis> which in comparison to the former uses one logic shifter less since only the UART connectivity is required; this did work fine, except for the fact that - no matter what I tried changing in code - the screen of the handset never turned off again, and it was the mere fact of not understanding the why which led to
 3. ... the current iteration which is, again based on 1. (and what you are reading currently); doing it the second time was way smoother, already having gained more experience didn't hurt either ;-)
 
+
 ## Changes to upstream
 
 This fork has rather small adjustments from the great upstream repo <https://github.com/tjhorner/upsy-desky> (also: cf. commit history):
@@ -75,6 +76,8 @@ Thus:
 
 ## How To...
 
+Any standing desk that uses RJ45 to connect to the keypad is likely compatible, but the control boxes listed [here](https://upsy-desky.tjhorner.dev/docs/reference/compatibility/) are verified to be compatible.
+
 ### Set up a development environment?
 
 * As usual: DON'T try getting it running on Windows, just get a Linux somewhere (e.g., a Raspberry) and you are good to go via running [setup.sh](tools/setup.sh)
@@ -90,8 +93,7 @@ Thus:
       web_password: TODO4
 
       ota_password: TODO5
-TL      ```
-
+      ```
   * `esphome run debug.yaml` in case you need more information
   * `esphome logs debug.yaml` for connecting to `LOGGER` (UART0)
 
