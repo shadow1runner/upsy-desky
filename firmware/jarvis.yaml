@@ -5,8 +5,6 @@ esphome:
   name_add_mac_suffix: false
   project:
     name: shadow1runner.upsy-desky # https://github.com/shadow1runner/upsy-desky/
-  libraries:
-    - i2c
 
 esp32:
   board: esp32doit-devkit-v1

@@ -38,6 +38,7 @@ web_server:
 
 ota:
   - platform: esphome
+    id: ota_esphome
 
 dashboard_import:
   package_import_url: github://tjhorner/upsy-desky/firmware/stock.yaml@v4.0.2
