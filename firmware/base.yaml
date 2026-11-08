@@ -3,7 +3,7 @@ esphome:
   name: "${name}"
   # friendly_name: "${friendly_name}"
   name_add_mac_suffix: true
-  min_version: "2026.6.4"
+  min_version: "2026.10.2"
   on_boot:
     then:
       # Wakes up the desk and reports height

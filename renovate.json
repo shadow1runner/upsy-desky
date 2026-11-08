@@ -12,6 +12,11 @@
     {
       "matchUpdateTypes": ["major"],
       "automerge": false
+    },
+    {
+      "description": "ESPHome requires Python <3.15 (installing it on 3.15 fails building ruamel.yaml.clib)",
+      "matchDepNames": ["python"],
+      "allowedVersions": "<3.15"
     }
   ]
 }
